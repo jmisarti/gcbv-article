@@ -1,5 +1,18 @@
-<ul>
-{% for post in post_list %}
-    <li><a href='{% url "blog:detail" post.pk %}'>{{ post.title }}</a></li>
-{% endfor %}
-</ul>
+<h1>Blog Entries</h1>
+
+<div class="list">
+    <p><a href='/create/'>Create New</a></p>
+    <table>
+            
+        {% if post|length > 0 %}
+        {% for post in post_list %}
+            <tr>
+                <td><a href='{% url "blog:detail" post.pk %}'>{{ post.title }}</a></td>
+                <td>Descriptor Here</td>
+                <td><a href='{% url "blog:update" post.pk %}'>Edit?</a></td>
+                <td><a href='{% url "blog:delete" post.pk %}'>Delete</a></td>
+            </tr>
+        {% endfor %}
+     </table>  
+    {% endif %}
+</div>
